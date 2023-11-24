@@ -1,16 +1,50 @@
 === WP-Stateless - WooCommerce Extra Product Options Addon ===
-Contributors: usability_dynamics, andypotanin, ideric, maxim.peshkov, Anton Korotkoff, planvova, balexey88
+Contributors: usability_dynamics, andypotanin, ideric, maxim.peshkov, planvova, obolgun
 Donate link: https://udx.io
-Tags: google, google cloud, google cloud storage, cdn, uploads, media, stateless, backup, product addons for woocommerce, woocommerce, woocommerce extra product options
+Tags: woocommerce, woo, extra product options, google, google cloud, google cloud storage, cdn, uploads, media, stateless, backup,
 License: GPLv2 or later
 Requires PHP: 8.0
 Requires at least: 5.0
-Tested up to: 6.3.2
-Tested with WooCommerce Extra Product Options: 4.6.9.3
+Tested up to: 6.4.1
 Stable tag: 0.0.1
 
-Provides compatibility between WooCommerce Extra Product Options and WP-Stateless plugins.
+Provides compatibility between the WooCommerce Extra Product Options and the WP-Stateless plugins.
 
 == Description ==
 
-Sync uploaded files with GCS.
+Provides compatibility between the [WooCommerce Extra Product Options](https://codecanyon.net/item/woocommerce-extra-product-options/7908619) and the [WP-Stateless](https://wordpress.org/plugins/wp-stateless/) plugins.
+
+= Features =
+
+* Sync user uploaded files with Google Cloud Storage.
+
+= Notes =
+
+* Tested with WooCommerce Extra Product Options plugin version 4.6.9.3
+
+= Support, Feedback, & Contribute =
+
+We welcome community involvement via the [GitHub repository](https://github.com/udx/wp-stateless-woo-extra-product-options-addon).
+
+== Frequently Asked Questions ==
+
+= Where can I submit feature requests or bug reports? =
+
+We encourage community feedback and discussion through issues on the [GitHub repository](https://github.com/udx/wp-stateless-woo-extra-product-options-addon/issues).
+
+= Can I test new features before they are released? =
+
+To ensure new releases cause as little disruption as possible, we rely on early adopters who assist us by testing out new features before they are released. [Please contact us](https://udx.io/) if you are interested in becoming an early adopter.
+
+= Who maintains this plugin? =
+
+[UDX](https://udx.io/) maintains this plugin by continuing development through its own staff, reviewing pull requests, testing, and steering the overall release schedule. UDX is located in Durham, North Carolina, and provides WordPress engineering and hosting services to clients throughout the United States.
+
+== Upgrade Notice ==
+
+== Changelog ==
+
+= 0.0.1 =
+
+* Initial public release.
+
