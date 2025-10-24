@@ -1,14 +1,5 @@
 <?php
-/**
- * Compatibility Plugin Name: WooCommerce Extra Product Options
- * Compatibility Plugin URI: https://codecanyon.net/item/woocommerce-extra-product-options/7908619
- * Related issue: https://github.com/wpCloud/wp-stateless/issues/266
- *
- * Compatibility Description: Ensures compatibility with WooCommerce Extra Product Options.
- *
- */
-
-namespace WPSL\WooExtraProductOptions;
+namespace SLCA\WooExtraProductOptions;
 
 use wpCloud\StatelessMedia\Compatibility;
 

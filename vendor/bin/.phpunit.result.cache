@@ -1,1 +1,1 @@
-{"version":1,"defects":[],"times":{"WPSL\\WooExtraProductOptions\\ClassWooExtraProductOptionsTest::testShouldInitHooks":0.069}}
+{"version":1,"defects":[],"times":{"WPSL\\WooExtraProductOptions\\ClassWooExtraProductOptionsTest::testShouldInitHooks":0.069,"SLCA\\WooExtraProductOptions\\ClassWooExtraProductOptionsTest::testShouldInitHooks":0.078}}
