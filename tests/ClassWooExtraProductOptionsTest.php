@@ -1,6 +1,6 @@
 <?php
 
-namespace WPSL\WooExtraProductOptions;
+namespace SLCA\WooExtraProductOptions;
 
 use PHPUnit\Framework\TestCase;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
