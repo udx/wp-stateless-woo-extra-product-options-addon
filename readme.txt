@@ -1,11 +1,11 @@
 === WP-Stateless - WooCommerce Extra Product Options Addon ===
-Contributors: usability_dynamics, andypotanin, ideric, maxim.peshkov, planvova, obolgun
+Contributors: usability_dynamics, andypotanin, ideric, planvova, obolgun
 Donate link: https://udx.io
-Tags: woocommerce, woo, extra product options, google, google cloud, google cloud storage, cdn, uploads, media, stateless, backup,
+Tags: woocommerce extra product options, woocommerce extra product options addon extension, google cloud storage, stateless, wp-stateless
 License: GPLv2 or later
 Requires PHP: 8.0
 Requires at least: 5.0
-Tested up to: 6.4.1
+Tested up to: 6.8
 Stable tag: 0.0.1
 
 Provides compatibility between the WooCommerce Extra Product Options and the WP-Stateless plugins.
