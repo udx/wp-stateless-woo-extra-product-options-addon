@@ -6,7 +6,8 @@
  * Description: Provides compatibility between the WooCommerce Extra Product Options and the WP-Stateless plugins.
  * Author: UDX
  * Version: 0.0.1
- * Text Domain: wp-stateless-woo-extra-product-options-addon
+ * Text Domain: wp-stateless-woocommerce-extra-product-options-addon
+ * Requires Plugins: woocommerce
  * Author URI: https://udx.io
  * License: GPLv2 or later
  * 
@@ -26,7 +27,7 @@ add_action('plugins_loaded', function () {
     if ($plugin_file !== join(DIRECTORY_SEPARATOR, [basename(__DIR__), basename(__FILE__)])) return $plugin_meta;
     $plugin_meta[] = sprintf(
       '<span style="color:red;">%s</span>',
-      __('This plugin requires WP-Stateless plugin version 3.4.0 or greater to be installed and active.', 'wp-stateless-woo-extra-product-options-addon'),
+      __('This plugin requires WP-Stateless plugin version 3.4.0 or greater to be installed and active.', 'wp-stateless-woocommerce-extra-product-options-addon'),
     );
     return $plugin_meta;
   }, 10, 4);
