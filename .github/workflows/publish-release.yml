@@ -105,7 +105,6 @@ jobs:
         with:
           message: Cleanup files for release
           new_branch: ${{ steps.vars.outputs.branch }}
-          tag: ${{ steps.vars.outputs.full_tag }}
 
       # generate SBOM that will be attached to a release as an artifact
       - name: Create SBOM
