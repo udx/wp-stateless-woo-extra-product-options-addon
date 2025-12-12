@@ -41,7 +41,7 @@ jobs:
         
       # 'ref' and 'repository' are required, otherwise repo could appear in detached head state
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           ref: ${{ github.head_ref }}
           repository: ${{ github.repository }}
@@ -129,7 +129,7 @@ jobs:
         
       # attach SBOM to release
       - name: Upload SBOM to release
-        uses: actions/upload-release-asset@v1.0.2
+        uses: softprops/action-gh-release@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -148,5 +148,6 @@ jobs:
 
       # delete temporary release branch
       - name: Delete temporary release branch
+        if: always()
         run: |
           git push origin --delete ${{ steps.vars.outputs.branch }}
