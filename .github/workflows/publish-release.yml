@@ -102,6 +102,8 @@ jobs:
       # commit changes to temporary release branch and create a new tag
       - name: Commit changes
         uses: EndBug/add-and-commit@v9
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           message: Cleanup files for release
           new_branch: ${{ steps.vars.outputs.branch }}
