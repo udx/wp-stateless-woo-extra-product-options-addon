@@ -123,6 +123,7 @@ jobs:
           name: "Release ${{ steps.vars.outputs.full_tag }}"
           body: "${{ steps.changelog.outputs.description }}"
           tag_name: ${{ steps.vars.outputs.full_tag }}
+          target_commitish: ${{ steps.vars.outputs.branch }}
           draft: false
           prerelease: ${{ steps.vars.outputs.is_prerelease }}
           generate_release_notes: false
