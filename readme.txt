@@ -6,7 +6,7 @@ License: GPLv2 or later
 Requires PHP: 8.0
 Requires at least: 5.0
 Tested up to: 6.9
-Stable tag: 0.0.1
+Stable tag: 0.0.2
 
 Provides compatibility between the WooCommerce Extra Product Options and the WP-Stateless plugins.
 
@@ -44,7 +44,7 @@ To ensure new releases cause as little disruption as possible, we rely on early 
 
 == Changelog ==
 
-= 0.0.1 =
+= 0.0.2 =
 
 * Initial public release.
 
