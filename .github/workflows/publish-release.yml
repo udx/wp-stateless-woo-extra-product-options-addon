@@ -146,6 +146,12 @@ jobs:
         with:
           release_id: ${{ steps.draft_release.outputs.id }}
 
+      # delete tag if there was an error
+      - name: Delete tag on failure
+        if: failure()
+        run: |
+          git push origin --delete ${{ steps.vars.outputs.full_tag }}
+
       # delete temporary release branch
       - name: Delete temporary release branch
         if: always()
