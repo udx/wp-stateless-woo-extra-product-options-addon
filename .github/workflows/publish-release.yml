@@ -117,7 +117,7 @@ jobs:
           format: spdx-json
 
       # create a draft release with the version changelog as a description
-      - name: Create Draft Release
+      - name: Create and Publish Release
         id: draft_release
         uses: softprops/action-gh-release@v2
         with:
@@ -126,26 +126,8 @@ jobs:
           tag_name: ${{ steps.vars.outputs.full_tag }}
           draft: false
           prerelease: ${{ steps.vars.outputs.is_prerelease }}
+          generate_release_notes: false
           files: sbom.spdx.json
-        
-      # attach SBOM to release
-      # - name: Upload SBOM to release
-      #   uses: softprops/action-gh-release@v2
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   with:
-      #     upload_url: ${{ steps.draft_release.outputs.upload_url }}
-      #     asset_path: ./sbom.spdx.json
-      #     asset_name: sbom.spdx.json
-      #     asset_content_type: application/json
-
-      # publish release using an ID from the 'draft_release' step
-      # - name: Publish Release
-      #   uses: eregon/publish-release@v1
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   with:
-      #     release_id: ${{ steps.draft_release.outputs.id }}
 
       # delete tag if there was an error
       - name: Delete tag on failure
