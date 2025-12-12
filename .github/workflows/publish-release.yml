@@ -105,7 +105,7 @@ jobs:
         with:
           message: Cleanup files for release
           new_branch: ${{ steps.vars.outputs.branch }}
-          # tag: ${{ steps.vars.outputs.full_tag }}
+          tag: ${{ steps.vars.outputs.full_tag }}
 
       # generate SBOM that will be attached to a release as an artifact
       - name: Create SBOM
@@ -123,7 +123,7 @@ jobs:
         with:
           name: "Release ${{ steps.vars.outputs.full_tag }}"
           body: "${{ steps.changelog.outputs.description }}"
-          # tag_name: ${{ steps.vars.outputs.full_tag }}
+          tag_name: ${{ steps.vars.outputs.full_tag }}
           draft: false
           prerelease: ${{ steps.vars.outputs.is_prerelease }}
           # generate_release_notes: false
