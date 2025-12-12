@@ -150,7 +150,7 @@ jobs:
       - name: Delete tag on failure
         if: failure()
         run: |
-          git push origin --delete ${{ steps.vars.outputs.full_tag }} || true
+          git push origin --delete refs/tags/${{ steps.vars.outputs.full_tag }} || true
 
       # delete temporary release branch
       - name: Delete temporary release branch
