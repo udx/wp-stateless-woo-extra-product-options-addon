@@ -2,7 +2,8 @@ name: Publish Release
 run-name: Publish Release
 
 on:
-  workflow_dispatch:
+  # workflow_dispatch:
+  workflow_call:
     inputs:
       tag:
         description: 'Release tag (e.g. 1.2.3a)'
