@@ -75,7 +75,7 @@ jobs:
           script: |
             const { open } = require('fs/promises');
 
-            const version = ${{ steps.vars.outputs.version }};
+            const version = '${{ steps.vars.outputs.version }}';
             const delimiter = '#### ';
             const file = await open('./changes.md');
 
