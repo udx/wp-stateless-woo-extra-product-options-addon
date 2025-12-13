@@ -5,7 +5,7 @@
  * Plugin URI: https://stateless.udx.io/addons/woo-extra-product-options/
  * Description: Provides compatibility between the WooCommerce Extra Product Options and the WP-Stateless plugins.
  * Author: UDX
- * Version: 0.0.2
+ * Version: 0.0.1
  * Text Domain: wp-stateless-woocommerce-extra-product-options-addon
  * Requires Plugins: woocommerce
  * Author URI: https://udx.io

@@ -4,9 +4,12 @@ run-name: Publish Release
 on:
   workflow_dispatch:
     inputs:
-      release:
-        description: 'Release version (e.g. 1.2.3)'
+      tag:
+        description: 'Release tag (e.g. 1.2.3a)'
         required: true
+      version:
+        description: 'Release version (e.g. 1.2.3), default: latest'
+        required: false
       prerelease:
         description: 'Pre-release version (e.g. RC1, beta, etc...)'
         required: false
@@ -15,7 +18,8 @@ permissions:
   contents: write
 
 env:
-  TAG: ${{ github.event.inputs.release }}
+  TAG: ${{ github.event.inputs.tag }}
+  VERSION: ${{ github.event.inputs.version }}
   PRETAG: ${{ github.event.inputs.prerelease }}
   BRANCH: temp-release-${{ github.event.inputs.release }}
 
@@ -23,11 +27,33 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      # 'ref' and 'repository' are required, otherwise repo could appear in detached head state
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.head_ref }}
+          repository: ${{ github.repository }}
+
+      # Prepare variables
       - name: Prepare vars
         id: vars
         uses: actions/github-script@v8
         with:
           script: |
+            let version = process.env.VERSION;
+            
+            // If VERSION is empty, read from readme.txt
+            if (!version) {
+              const readmeContent = fs.readFileSync('./readme.txt', 'utf8');
+              const stableTagMatch = readmeContent.match(/^Stable tag:\s*(.+)$/m);
+              if (stableTagMatch) {
+                version = stableTagMatch[1].trim();
+                console.log(`Version extracted from readme.txt: ${version}`);
+              } else {
+                core.setFailed('VERSION is empty and could not extract version from readme.txt');
+              }
+            }
+
             const full_tag = [
               process.env.TAG,
               process.env.PRETAG
@@ -37,15 +63,9 @@ jobs:
 
             core.setOutput('full_tag', full_tag );
             core.setOutput('branch', branch );
+            core.setOutput('version', version );
             core.setOutput('is_prerelease', is_prerelease );
         
-      # 'ref' and 'repository' are required, otherwise repo could appear in detached head state
-      - name: Checkout
-        uses: actions/checkout@v6
-        with:
-          ref: ${{ github.head_ref }}
-          repository: ${{ github.repository }}
-
       - name: Parse Changelog Entries
         uses: actions/github-script@v8
         id: changelog
@@ -53,7 +73,7 @@ jobs:
           script: |
             const { open } = require('fs/promises');
 
-            const version = process.env.TAG;
+            const version = ${{ steps.vars.outputs.version }};
             const delimiter = '#### ';
             const file = await open('./changes.md');
 
@@ -77,7 +97,6 @@ jobs:
             if ( !description.length ) core.setFailed(`Release ${version} not found in the changelog!`);
 
             core.setOutput('description', description.join('\n') );
-
 
       # cleanup files that are not needed for the release
       # but keep the .git folder, because we need it for the next step
@@ -121,7 +140,7 @@ jobs:
         id: draft_release
         uses: softprops/action-gh-release@v2
         with:
-          name: "Release ${{ steps.vars.outputs.full_tag }}"
+          name: "Release ${{ steps.vars.outputs.version }}"
           body: "${{ steps.changelog.outputs.description }}"
           tag_name: ${{ steps.vars.outputs.full_tag }}
           draft: false
